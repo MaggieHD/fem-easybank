@@ -1,0 +1,98 @@
+.header {
+    nav {
+        position: relative;
+        z-index: 1;
+        padding: 1.0625rem 1.4375rem;
+    }
+    &__logo {
+        img {
+            width: 8.8125rem;
+            height: 1.375rem;
+        }
+    }
+    &__menu {
+        //mobile menu
+        transition: all .3s ease-in-out;
+        >span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            margin-top: -6px;
+            margin-bottom: 6px;
+            background-color: $darkBlue;
+            transition: all .3s ease-in-out;
+        }
+        >span::before,
+        >span::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: $darkBlue;
+            transition: all .3s ease-in-out;
+        }
+        >span::before {
+            transform: translateY(-6px);
+        }
+        >span::after {
+            transform: translateY(6px);
+        }
+        &.toggle {
+            transform: translateX(-30px);
+            >span {
+                background: transparent;
+            }
+            >span::before {
+                transform: rotate(45deg) translate(21px, -21px);
+            }
+            >span::after {
+                transform: rotate(-45deg) translate(21px, 21px);
+            }
+        }
+    }
+    &__links {
+        a {
+            float: left;
+            position: relative;
+            font-size: $font-sm;
+            color: $grayishBlue;
+            text-align: center;
+            transition: color 300ms ease-in-out;
+            width: 3.125rem;
+            &:not(:last-child) {
+                margin-right: 1rem;
+            }
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 5px;
+                left: 0;
+                right: 0;
+                bottom: -30px;
+                background: linear-gradient(to right, $limeGreen, $brightCyan);
+                opacity: 0;
+                transition: opacity 300ms ease-in-out;
+            }
+            &:hover {
+                color: $darkBlue;
+                font-weight: 400;
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.overlay {
+    opacity: 0;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: $darkBlue;
+    background: linear-gradient($darkBlue, transparent);
+}
